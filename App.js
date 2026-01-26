@@ -15,21 +15,26 @@ export default function App() {
 
   const WEATHER_API_KEY = '406a56f68c96058d9cef94834bd1ec4f';
 
-  const getWeather = async () => {
-    if (!city) return Alert.alert("도시 이름을 입력하세요.");
-    setLoading(true);
-    try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric`
-      );
-      setWeather(response.data);
-      setMenu(recommendMenu(response.data.weather[0].main));
-    } catch (error) {
-      Alert.alert("알림", "도시를 찾을 수 없습니다.");
-    } finally {
-      setLoading(false);
-    }
-  };
+// App.js 내의 getWeather 함수 수정
+const getWeather = async () => {
+  if (!city) return Alert.alert("도시 이름을 입력하세요.");
+  setLoading(true);
+  try {
+    const response = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${WEATHER_API_KEY}&units=metric&lang=kr`
+    );
+    
+    setWeather(response.data);
+    // 여기서 주의! response.data.weather[0].main은 여전히 'Clear' 같은 영문 그룹명입니다.
+    // 우리 로직(recommendation.js)은 이 영문 그룹명을 쓰므로 그대로 두면 됩니다.
+    setMenu(recommendMenu(response.data.weather[0].main));
+    
+  } catch (error) {
+    Alert.alert("알림", "도시를 찾을 수 없습니다. (한글/영문 모두 가능)");
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => { getWeather(); }, []);
 
