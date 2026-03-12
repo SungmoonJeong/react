@@ -1,108 +1,149 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  main: { flex: 1, backgroundColor: '#ffffff' },
-  textWrapper: { fontSize: 24, fontWeight: 'bold', marginTop: 60, marginBottom: 20 },
-  
-  // 검색창 영역
-  pillsWrapper: { 
-    flexDirection: 'row', 
-    width: 374, 
-    height: 60, 
-    backgroundColor: '#efeff0', 
-    borderRadius: 8, 
-    borderWidth: 2, 
-    borderColor: '#d1d1d1', 
-    alignItems: 'center', 
-    paddingHorizontal: 15 
+  // 1. 전체 레이아웃
+  main: {
+    flex: 1,
+    backgroundColor: '#ffffff',
   },
-  div: { flex: 1, fontSize: 18, color: '#000' },
-  searchBtn: { padding: 5 },
-
-  // 중앙 날씨 카드 (수정 핵심)
-  start3: { 
-    width: 379, 
-    minHeight: 300, 
-    backgroundColor: '#efeff0', 
-    borderRadius: 8, 
-    borderWidth: 2, 
-    borderColor: '#d1d1d1', 
-    padding: 20, 
-    marginVertical: 30,
-    alignItems: 'center', // 모든 내부 요소를 가로 중앙으로
-    justifyContent: 'center'
+  textWrapper: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 60,
+    marginBottom: 20,
+    color: '#333',
+    textAlign: 'center',
   },
 
-// styles.js 내 seoulBox 부분 수정
-  seoulBox: { 
-  backgroundColor: '#d9d9d9', 
-  paddingVertical: 8, 
-  paddingHorizontal: 25, 
-  borderRadius: 4,
-  marginBottom: 15,
-
-  // ★ 왼쪽 끝으로 정렬
-  alignSelf: 'flex-start', 
-  
-  // 너무 벽에 딱 붙으면 보기 안 좋으니 왼쪽 여백을 살짝 줍니다.
-  marginLeft: 5 
-},
-  
-// styles.js 수정 부분
-
-// 1. 온도와 이미지를 감싸는 컨테이너
-tempAndImage: { 
-  flexDirection: 'row', 
-  width: '100%', 
-  // ★ 중앙 정렬 대신 양 끝으로 벌림
-  justifyContent: 'space-between', 
-  alignItems: 'center', 
-  marginVertical: 10,
-  // 양 끝 벽에 너무 붙지 않도록 컨테이너 자체에 여백 추가
-  paddingHorizontal: 10 
-},
-
-// 2. 온도 숫자 박스 (왼쪽)
-frame: { 
-  backgroundColor: '#d9d9d9', 
-  padding: 15, 
-  borderRadius: 8,
-  // space-between을 썼으므로 marginRight는 필요 없거나 작게 조절
-  marginLeft: 0.0001 
-},
-
-// 3. 날씨 이미지 (오른쪽)
-weatherIconImage: {
-  width: 110, 
-  height: 110,
-  resizeMode: 'contain',
-  // 오른쪽 여백 살짝 추가
-  marginRight: 5 
-},
-  // 하단 메뉴 추천 박스
-  rectangleWrapper: { 
-    backgroundColor: '#fff', 
-    padding: 20, 
-    width: '100%', 
-    alignItems: 'center', 
-    borderRadius: 10,
+  // 2. 검색창 (TextInput + 돋보기 버튼)
+  pillsWrapper: {
+    flexDirection: 'row',
+    width: '90%',
+    alignItems: 'center',
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  div: {
+    flex: 1,
+    height: 50,
     borderWidth: 1,
-    borderColor: '#eee',
-    marginTop: 15
+    borderColor: '#ddd',
+    borderRadius: 25,
+    paddingHorizontal: 20,
+    fontSize: 16,
+    backgroundColor: '#f9f9f9',
+  },
+  searchBtn: {
+    width: 50,
+    height: 50,
+    backgroundColor: '#4a90e2',
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
   },
 
-  textWrapper3: { fontSize: 22, fontWeight: 'bold' },
-  textWrapper4: { fontSize: 18, fontWeight: 'bold', color: '#2d3436', textAlign: 'center', lineHeight: 26 },
-
-  // 하단 버튼
-  pills: { 
-    backgroundColor: '#4a90e2', 
-    width: 374, 
-    height: 55, 
-    borderRadius: 12, 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    marginTop: 10 
+  // 3. 날씨 카드 (WeatherCard 관련)
+  start3: {
+    width: '90%',
+    padding: 25,
+    borderRadius: 20,
+    backgroundColor: '#4a90e2',
+    alignItems: 'center',
+    marginBottom: 30,
+    alignSelf: 'center',
+    // 그림자
+    elevation: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
   },
-  label: { color: 'white', fontWeight: 'bold', fontSize: 16 }
+  seoulBox: {
+    marginBottom: 5,
+  },
+  textWrapper3: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  tempAndImage: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  rectangleWrapper: {
+    marginTop: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    borderRadius: 15,
+  },
+  textWrapper4: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+
+  // 4. 네이버 맛집 리스트 (추가된 부분)
+  resContainer: {
+    width: '90%',
+    alignSelf: 'center',
+  },
+  resMainTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    color: '#333',
+  },
+  resCard: {
+    backgroundColor: '#fff',
+    padding: 18,
+    borderRadius: 15,
+    marginBottom: 12,
+    borderWidth: 1,
+    borderColor: '#f0f0f0',
+    // 안드로이드 그림자
+    elevation: 3,
+    // iOS 그림자
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+  },
+  resTitle: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    color: '#00c73c', // 네이버 상징색
+  },
+  resAddr: {
+    fontSize: 13,
+    color: '#666',
+    marginTop: 6,
+    lineHeight: 18,
+  },
+  resLinkText: {
+    fontSize: 12,
+    color: '#4a90e2',
+    marginTop: 10,
+    fontWeight: 'bold',
+    textAlign: 'right',
+  },
+
+  // 5. 기타 버튼 (필요시 사용)
+  pills: {
+    width: '90%',
+    height: 50,
+    backgroundColor: '#eee',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    alignSelf: 'center',
+  },
+  label: {
+    fontSize: 16,
+    color: '#333',
+  },
 });
