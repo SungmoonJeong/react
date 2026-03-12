@@ -1,0 +1,5 @@
+export const API_KEYS = {
+  WEATHER: '406a56f68c96058d9cef94834bd1ec4f',
+  NAVER_ID: '806ef2zVEEI2BQqQ2jiH',
+  NAVER_SECRET: 'VQB6fxyutN',
+};
