@@ -146,4 +146,23 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
   },
+
+  // 기존 styles에 추가
+resCardWrapper: {
+  width: '100%',
+  marginBottom: 12,
+},
+kakaoShareBtn: {
+  backgroundColor: '#FEE500',   // 카카오 공식 노란색
+  borderRadius: 8,
+  paddingVertical: 10,
+  paddingHorizontal: 16,
+  alignItems: 'center',
+  marginTop: 4,
+},
+kakaoShareBtnText: {
+  color: '#3C1E1E',             // 카카오 공식 텍스트 색
+  fontWeight: 'bold',
+  fontSize: 14,
+},
 });
